@@ -1,2 +1,4 @@
 # census-data-cleaner
-A research tool made to parse an US Census csv file
+A research tool made to parse a US Census csv file
+
+Limited capabilities
