@@ -49,14 +49,24 @@ def start_parsing(raw, indexed_keys, keep):
                 fixed_column_name += token + " | "
             saved_columns.append(fixed_column_name[:-3])
         count += 1
+    null_columns = []
+    output_data = []
     for row in csv_reader:
         count = 0
         cleaned_row = []
         for cell in row:
-            if count not in ignored_columns:
+            if count not in ignored_columns and cell != "null":
                 cleaned_row.append(cell.strip('''"'''))
+            if cell == "null":
+                null_columns.append(count)
             count += 1
-        new_file_writer.writerow(cleaned_row)
+        output_data.append(cleaned_row)
+    output_columns = []
+    for column in saved_columns:
+        if saved_columns.index(column) not in null_columns:
+            output_columns.append(column)
+    new_file_writer.writerow(output_columns)
+    new_file_writer.writerows(output_data)
     new_file.close()
 
 
