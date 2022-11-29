@@ -34,7 +34,7 @@ def start_parsing(raw, indexed_keys, keep):
     csv_reader.__next__()
     line = csv_reader.__next__()
     count = 0
-    new_file = open("outputFile.csv", "w", newline='')
+    new_file = open("output/outputFile.csv", "w", newline='')
     new_file_writer = csv.writer(new_file)
     saved_columns = []
     for column in line:
