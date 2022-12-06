@@ -82,20 +82,26 @@ def preprocess(raw):
             cat_levels[category] = level
             level += 1
     indexed_categories = print_categories(cat_levels)
-    removed_categories = input(
-        "\nFrom the list above select all the values you want removed separated by spaces\nExample: 00 01 20 30\n")
-    removed_categories = removed_categories.split(sep=" ")
-    for index in removed_categories:
-        try:
-            index = int(index)
-            indexed_categories.pop(list(indexed_categories.keys())[list(indexed_categories.values()).index(index)])
-        except:
-            # Bug here to recheck input
-            print("Please type only numbers, try again")
-            removed_categories = input(
-                "\nFrom the list above select all the values you want removed separated by spaces\nExample: 00 01 20 "
-                "30\n")
-            removed_categories = removed_categories.split(sep=" ")
+    old = indexed_categories.copy()
+    count = 0
+    while True:
+        removed_categories = input(
+            "\nFrom the list above select all the values you want removed separated by spaces\nExample: 00 01 20 30\n")
+        removed_categories = removed_categories.strip().split(sep=" ")
+        if removed_categories[0]  == "": break
+        for index in removed_categories:
+            try:
+                index = int(index)
+                indexed_categories.pop(list(indexed_categories.keys())[list(indexed_categories.values()).index(index)])
+                count +=1
+            except:
+                # Bug here to recheck input
+                print("Please type only numbers, try again")
+                indexed_categories = old
+                count = 0
+                break
+        if len(removed_categories) == count or len(removed_categories) == 0:
+            break
     category_keys = []
     for item in indexed_categories:
         category_keys.append(item)
