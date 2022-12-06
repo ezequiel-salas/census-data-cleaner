@@ -132,7 +132,7 @@ def print_help():
     # more print_help later
     print("Usage: censusParser.py fileName [-print_help] [-keep]")
     print("\t-print_help\t-Print out this message.")
-    print("\t-keep\t-Keep all null value columns.\n\t\t (Default: Remove any columns containing only null)")
+    print("\t-keep\t-Keep all null value columns.\n\t\t (Default: Remove any columns containing only null, CURRENTLY UNUSED)")
 
 
 if __name__ == '__main__':
