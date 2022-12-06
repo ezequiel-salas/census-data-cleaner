@@ -5,7 +5,10 @@ VERY EARLY STAGE
 
 [RIT Research Page](https://www.rit.edu/gccis/geoinfosciencecenter/nsf-civic)
 ## Usage
-censusParser.py filename [-print_help] [-keep]
+python censusParser.py filename [-print_help] [-keep]
+
+## Requirement
+Recommended python 3.10 (built using python 3.10)
 
 ## Process
 
